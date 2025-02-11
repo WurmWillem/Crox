@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 #include "debug.h"
+#include "chunk.h"
 
 void disassembleChunk(Chunk *chunk, const char *name) {
   printf("== %s ==\n", name);
@@ -40,6 +41,8 @@ int disassembleInstruction(Chunk *chunk, int offset) {
     return constantInstruction("OP_CONSTANT", chunk, offset);
   case OP_RETURN:
     return simpleInstruction("OP_RETURN", offset);
+  case OP_NEGATE:
+    return simpleInstruction("OP_NEGATE", offset);
     break;
 
   default:
