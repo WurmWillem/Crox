@@ -1,7 +1,7 @@
 #include <stdio.h>
 
-#include "debug.h"
 #include "chunk.h"
+#include "debug.h"
 
 void disassembleChunk(Chunk *chunk, const char *name) {
   printf("== %s ==\n", name);
@@ -28,8 +28,7 @@ static int constantInstruction(const char *name, Chunk *chunk, int offset) {
 
 int disassembleInstruction(Chunk *chunk, int offset) {
   printf("%04d ", offset);
-    if (offset > 0 &&
-      chunk->lines[offset] == chunk->lines[offset - 1]) {
+  if (offset > 0 && chunk->lines[offset] == chunk->lines[offset - 1]) {
     printf("   | ");
   } else {
     printf("%4d ", chunk->lines[offset]);
@@ -43,6 +42,15 @@ int disassembleInstruction(Chunk *chunk, int offset) {
     return simpleInstruction("OP_RETURN", offset);
   case OP_NEGATE:
     return simpleInstruction("OP_NEGATE", offset);
+  case OP_ADD:
+    return simpleInstruction("OP_ADD", offset);
+  case OP_SUB:
+    return simpleInstruction("OP_SUBTRACT", offset);
+  case OP_MULT:
+    return simpleInstruction("OP_MULTIPLY", offset);
+  case OP_DIV:
+    return simpleInstruction("OP_DIVIDE", offset);
+
     break;
 
   default:
