@@ -24,6 +24,6 @@ void freeVM();
 void stackPush(Value value);
 Value stackPop();
 
-InterpretResult interpret(Chunk* chunk);
+InterpretResult interpret(const char* source);
 
 #endif
