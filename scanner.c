@@ -179,6 +179,7 @@ static Token identifier() {
 }
 
 Token scanToken() {
+    skipWhitespace();
     scanner.start = scanner.current;
 
     if (isAtEnd())

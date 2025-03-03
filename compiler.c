@@ -4,12 +4,13 @@
 #include "compiler.h"
 #include "scanner.h"
 
-void compile(const char *source) {
+bool compile(const char *source) {
     initScanner(source);
 
     int line = -1;
     for (;;) {
         Token token = scanToken();
+        /*printf("\n%d\n", token.type);*/
         if (token.line != line) {
             printf("%4d ", token.line);
             line = token.line;
@@ -21,4 +22,5 @@ void compile(const char *source) {
         if (token.type == TOKEN_EOF)
             break;
     }
+    return true;
 }
