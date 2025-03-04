@@ -1,5 +1,6 @@
 #include "scanner.h"
 #include "common.h"
+#include <stdio.h>
 #include <string.h>
 
 Scanner scanner;
@@ -27,7 +28,7 @@ static Token makeToken(TokenType type) {
     Token token;
     token.type = type;
     token.start = scanner.current;
-    token.length = scanner.current - scanner.start;
+    token.length = (int)(scanner.current - scanner.start);
     token.line = scanner.line;
     return token;
 }
@@ -36,7 +37,7 @@ static Token errorToken(const char *msg) {
     Token token;
     token.type = TOKEN_ERROR;
     token.start = msg;
-    token.length = strlen(msg);
+    token.length = (int)strlen(msg);
     token.line = scanner.line;
     return token;
 }
@@ -163,6 +164,7 @@ static TokenType identifierType() {
                 return checkKeyword(2, 2, "ue", TOKEN_TRUE);
             }
         }
+        break;
     case 'v':
         return checkKeyword(1, 2, "ar", TOKEN_VAR);
     case 'w':
