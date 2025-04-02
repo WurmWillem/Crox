@@ -57,13 +57,13 @@ static InterpretResult run() {
         case OP_ADD:
             BINARY_OP(+);
             break;
-        case OP_SUB:
+        case OP_SUBTRACT:
             BINARY_OP(-);
             break;
-        case OP_MULT:
+        case OP_MULTIPLY:
             BINARY_OP(*);
             break;
-        case OP_DIV:
+        case OP_DIVIDE:
             BINARY_OP(/);
             break;
         }
